@@ -5,12 +5,15 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecordVC" customModule="RoundRecorder" customModuleProvider="target">
             <connections>
+                <outlet property="btnRecord" destination="iRE-Wx-Puy" id="dSw-7Z-8nN"/>
+                <outlet property="recordView" destination="xke-0F-uXN" id="axu-yE-3EJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,6 +26,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRE-Wx-Puy">
+                    <rect key="frame" x="157.5" y="591" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="iRE-Wx-Puy" secondAttribute="height" multiplier="1:1" id="hOc-ss-xzX"/>
+                        <constraint firstAttribute="width" constant="60" id="sYA-EU-37q"/>
+                    </constraints>
+                    <state key="normal" image="Restart-Red.png"/>
+                    <connections>
+                        <action selector="stopRecord:" destination="-1" eventType="touchUpInside" id="xKV-kg-xWf"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -30,7 +44,13 @@
                 <constraint firstItem="xke-0F-uXN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Msb-pR-WVr"/>
                 <constraint firstAttribute="bottom" secondItem="xke-0F-uXN" secondAttribute="bottom" id="Niv-3l-7HK"/>
                 <constraint firstAttribute="trailing" secondItem="xke-0F-uXN" secondAttribute="trailing" id="QTN-4g-cAE"/>
+                <constraint firstItem="iRE-Wx-Puy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="afJ-pe-uk2"/>
+                <constraint firstAttribute="bottom" secondItem="iRE-Wx-Puy" secondAttribute="bottom" constant="16" id="mC3-Nh-44K"/>
             </constraints>
+            <point key="canvasLocation" x="33.5" y="124.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="Restart-Red.png" width="96" height="96"/>
+    </resources>
 </document>

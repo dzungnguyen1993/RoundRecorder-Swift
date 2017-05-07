@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9503C741EBD7B36003CDCE8 /* Restart-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = B9503C721EBD7B36003CDCE8 /* Restart-Green.png */; };
+		B9503C751EBD7B36003CDCE8 /* Restart-Red.png in Resources */ = {isa = PBXBuildFile; fileRef = B9503C731EBD7B36003CDCE8 /* Restart-Red.png */; };
+		B9503C781EBD8A0E003CDCE8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9503C771EBD8A0E003CDCE8 /* Utils.swift */; };
+		B9503C7A1EBD8A32003CDCE8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9503C791EBD8A32003CDCE8 /* Constant.swift */; };
 		B9B32FB31EBC4E5800CAE76C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B32FB21EBC4E5800CAE76C /* AppDelegate.swift */; };
 		B9B32FBA1EBC4E5800CAE76C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9B32FB91EBC4E5800CAE76C /* Assets.xcassets */; };
 		B9B32FBD1EBC4E5800CAE76C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9B32FBB1EBC4E5800CAE76C /* LaunchScreen.storyboard */; };
@@ -37,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B9503C721EBD7B36003CDCE8 /* Restart-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Restart-Green.png"; sourceTree = "<group>"; };
+		B9503C731EBD7B36003CDCE8 /* Restart-Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Restart-Red.png"; sourceTree = "<group>"; };
+		B9503C771EBD8A0E003CDCE8 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B9503C791EBD8A32003CDCE8 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		B9B32FAF1EBC4E5800CAE76C /* RoundRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoundRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B32FB21EBC4E5800CAE76C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9B32FB91EBC4E5800CAE76C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +88,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B9503C711EBD7AD2003CDCE8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B9503C721EBD7B36003CDCE8 /* Restart-Green.png */,
+				B9503C731EBD7B36003CDCE8 /* Restart-Red.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B9503C761EBD89F8003CDCE8 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				B9503C771EBD8A0E003CDCE8 /* Utils.swift */,
+				B9503C791EBD8A32003CDCE8 /* Constant.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		B9B32FA61EBC4E5800CAE76C = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +129,8 @@
 		B9B32FB11EBC4E5800CAE76C /* RoundRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				B9503C761EBD89F8003CDCE8 /* Utility */,
+				B9503C711EBD7AD2003CDCE8 /* Resources */,
 				B9E6B2FB1EBC4EA500C99A7F /* Recorder */,
 				B9E6B2FC1EBC4EA500C99A7F /* View */,
 				B9E6B2FD1EBC4EA500C99A7F /* ViewController */,
@@ -272,6 +300,8 @@
 				B9B32FBD1EBC4E5800CAE76C /* LaunchScreen.storyboard in Resources */,
 				B9E6B3011EBC4EB800C99A7F /* RecordVC.xib in Resources */,
 				B9B32FBA1EBC4E5800CAE76C /* Assets.xcassets in Resources */,
+				B9503C741EBD7B36003CDCE8 /* Restart-Green.png in Resources */,
+				B9503C751EBD7B36003CDCE8 /* Restart-Red.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,10 +326,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9503C781EBD8A0E003CDCE8 /* Utils.swift in Sources */,
 				B9E6B3051EBC4EDE00C99A7F /* Recorder.swift in Sources */,
 				B9E6B3001EBC4EB800C99A7F /* RecordVC.swift in Sources */,
 				B9E6B3031EBC4EC900C99A7F /* RecordView.swift in Sources */,
 				B9B32FB31EBC4E5800CAE76C /* AppDelegate.swift in Sources */,
+				B9503C7A1EBD8A32003CDCE8 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

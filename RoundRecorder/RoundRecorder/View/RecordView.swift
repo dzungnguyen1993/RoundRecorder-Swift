@@ -13,7 +13,8 @@ import AVFoundation
 class RecordView: UIView {
 
     @IBOutlet var contentView: UIView!
-
+    var recorder: Recorder!
+    
     lazy var cameraSession: AVCaptureSession = {
         let s = AVCaptureSession()
         s.sessionPreset = AVCaptureSessionPresetHigh
@@ -40,8 +41,6 @@ class RecordView: UIView {
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options:NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": self.contentView]))
         
         self.initCamera()
-        
-        self.startSession()
     }
     
     func initCamera() {
@@ -56,12 +55,12 @@ class RecordView: UIView {
                 cameraSession.addInput(deviceInput)
             }
             
-            let dataOutput = Recorder()
-            dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA as UInt32)]
-            dataOutput.alwaysDiscardsLateVideoFrames = true
+            recorder = Recorder()
+            recorder.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA as UInt32)]
+            recorder.alwaysDiscardsLateVideoFrames = true
             
-            if (cameraSession.canAddOutput(dataOutput) == true) {
-                cameraSession.addOutput(dataOutput)
+            if (cameraSession.canAddOutput(recorder) == true) {
+                cameraSession.addOutput(recorder)
             }
             
             cameraSession.commitConfiguration()
@@ -74,6 +73,14 @@ class RecordView: UIView {
     func startSession() {
         self.layer.addSublayer(previewLayer)
         
+        let connection = recorder.connection(withMediaType: AVMediaTypeVideo)
+        connection?.videoOrientation = .portrait
+        
         cameraSession.startRunning()
+    }
+    
+    func stopRecord() {
+        cameraSession.stopRunning()
+        recorder.stopRecord()
     }
 }
