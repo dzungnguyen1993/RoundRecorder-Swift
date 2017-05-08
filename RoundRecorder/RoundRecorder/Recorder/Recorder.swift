@@ -10,6 +10,10 @@ import UIKit
 import AVKit
 import AVFoundation
 
+protocol RecorderDelegate: class {
+    func didFinishExportVideo(atUrl url: URL)
+}
+
 class Recorder: AVCaptureVideoDataOutput {
     typealias RecordCompletion = () -> Swift.Void
     
@@ -18,14 +22,14 @@ class Recorder: AVCaptureVideoDataOutput {
     var isSavingVideo = false
     var videoOrder = 0
     var lastRecordTimestamp = 0
-    
+    weak var delegate: RecorderDelegate?
     
     override init() {
         super.init()
         let queue = DispatchQueue(label: "com.invasivecode.videoQueue")
         self.setSampleBufferDelegate(self, queue: queue)
         
-        self.initWriters()
+        self.reset()
     }
     
     // MARK: Init asset writers
@@ -40,6 +44,13 @@ class Recorder: AVCaptureVideoDataOutput {
             print(error)
         }
         
+    }
+    
+    func reset() {
+        self.initWriters()
+        self.isSavingVideo = false
+        self.lastRecordTimestamp = 0
+        self.videoOrder = 0
     }
     
     func initWriter(order: Int) throws {
@@ -235,7 +246,7 @@ extension Recorder {
         exporter?.timeRange = range
 
         exporter?.exportAsynchronously {
-            print("Dz dep trai")
+            self.delegate?.didFinishExportVideo(atUrl: resultUrl)
         }
     }
     

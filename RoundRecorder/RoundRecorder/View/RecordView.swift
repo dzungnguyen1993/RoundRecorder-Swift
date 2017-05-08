@@ -10,10 +10,14 @@ import UIKit
 import AVKit
 import AVFoundation
 
+protocol RecordViewDelegate: class {
+    func didFinishExportVideo(atUrl url: URL)
+}
 class RecordView: UIView {
 
     @IBOutlet var contentView: UIView!
     var recorder: Recorder!
+    weak var delegate: RecordViewDelegate?
     
     lazy var cameraSession: AVCaptureSession = {
         let s = AVCaptureSession()
@@ -58,6 +62,7 @@ class RecordView: UIView {
             recorder = Recorder()
             recorder.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA as UInt32)]
             recorder.alwaysDiscardsLateVideoFrames = true
+            recorder.delegate = self
             
             if (cameraSession.canAddOutput(recorder) == true) {
                 cameraSession.addOutput(recorder)
@@ -82,5 +87,16 @@ class RecordView: UIView {
     func stopRecord() {
         cameraSession.stopRunning()
         recorder.stopRecord()
+    }
+    
+    func restart() {
+        recorder.reset()
+        cameraSession.startRunning()
+    }
+}
+
+extension RecordView: RecorderDelegate {
+    func didFinishExportVideo(atUrl url: URL) {
+        self.delegate?.didFinishExportVideo(atUrl: url)
     }
 }

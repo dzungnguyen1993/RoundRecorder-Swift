@@ -26,6 +26,31 @@ class Utils {
         
         return URL(fileURLWithPath: path)
     }
+    
+    static func moveItem(atUrl: URL, toUrl: URL) {
+        do {
+            try FileManager.default.moveItem(at: atUrl, to: toUrl)
+        } catch {
+            
+        }
+    }
+    
+    static func getResultFolder() -> String {
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let path = documentsPath.stringByAppendingPathComponent(path: "result")
+        
+        let fileManager = FileManager.default
+        var isDir : ObjCBool = false
+        if fileManager.fileExists(atPath: path, isDirectory: &isDir) == false {
+            do {
+                try fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                
+            }
+        }
+        
+        return path
+    }
 }
 
 extension String {
