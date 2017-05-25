@@ -183,6 +183,11 @@ extension Recorder {
         
         while currentDuration < Double(Constant.FINAL_LENGTH) && listVideoIds.count < Constant.NUMBER_OF_VIDEO {
             let videoPath = Utils.getRecordUrl(order: currentIds)
+            
+            if FileManager.default.fileExists(atPath: videoPath.path) == false {
+                break
+            }
+            
             let duration = self.getDuration(fileURL: videoPath)
             
             currentDuration += duration
